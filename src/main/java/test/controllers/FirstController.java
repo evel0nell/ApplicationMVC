@@ -22,7 +22,7 @@ public class FirstController {
     }
 
     @GetMapping("/goodbye")
-    public String goodbyePage(@RequestParam(value= "name") String name,
+    public String goodbyePage(@RequestParam(value= "name", required = false) String name,
                               @RequestParam(value = "surname", required= false) String surname,
                               Model model){
         model.addAttribute("message", "Goodbye"+ name+ surname);
@@ -38,11 +38,11 @@ public class FirstController {
         switch (operation){
             case "multiplication": result = a*b; break;
             case "addition" : result = a+b; break;
-            case "substraction" : result = a-b; break;
+            case "subtraction" : result = a-b; break;
             default: result = 0;
         }
         model.addAttribute("operation", "Chosen operation: " + operation);
-        model.addAttribute("result", "Result: " + String.valueOf(result));
+        model.addAttribute("result", "Result: " + result);
         return "first/calculator";
     }
 
